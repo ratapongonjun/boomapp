@@ -7,23 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lblUserName"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ชื่อ-สกุล" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lblAddress"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ที่อยู่" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/cmdSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello boomapp!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /-->
-
-    <!--android:hint="ชื่อ-สกุล"-->
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="156dp"
+        android:text="บันทึก"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="356dp"
         android:text="ชื่อ - สกุล :"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,32 +64,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="380dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/cmdCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="112dp"
-        android:text="ตรวจสอบ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="Hello boomapp!"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintLeft_toLeftOf="parent"
+     app:layout_constraintRight_toRightOf="parent"
+     app:layout_constraintTop_toTopOf="parent" /-->
+
+    <!--android:hint="ชื่อ-สกุล"-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="504dp"
         android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_search" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,11 +20,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText edtFullName = findViewById(R.id.edtFullName);
-        Button cmdCheck = findViewById(R.id.cmdCheck);
+        final TextInputLayout lblUserName = findViewById(R.id.lblUserName);
+        final EditText edtUserName = findViewById(R.id.edtUserName);
 
-        if (cmdCheck != null){
-            cmdCheck.setOnClickListener(new View.OnClickListener() {
+        final TextInputLayout lblAddress = findViewById(R.id.lblAddress);
+        final EditText edtAddress = findViewById(R.id.edtAddress);
+
+        final EditText edtFullName = findViewById(R.id.edtFullName);
+
+        Button cmdSave = findViewById(R.id.cmdSave);
+        cmdSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (edtUserName.getText().toString().trim().equals("")){
+                    lblUserName.setHint("กรุณาป้อนชื่อ-สกุลก่อน !!!");
+                }if (edtAddress.getText().toString().trim().equals("")){
+                    lblAddress.setHint("กรุณาป้อนที่อยู่ก่อน !!!");
+                }
+            }
+        });
+        /*if (cmdSave != null){
+            cmdSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (edtFullName.getText().toString().trim() != ""){
@@ -32,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-        }
+        }*/
 
         final ConstraintLayout ctMain = findViewById(R.id.ctMain);
 
