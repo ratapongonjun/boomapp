@@ -1,65 +1,73 @@
 package com.example.boomapp;
 
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputLayout;
-
 public class MainActivity extends AppCompatActivity {
+    com.google.android.material.bottomsheet.BottomSheetDialog bsDlg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextInputLayout lblUserName = findViewById(R.id.lblUserName);
-        final EditText edtUserName = findViewById(R.id.edtUserName);
+        View v = getLayoutInflater().inflate(R.layout.bs_layout, null);
+        bsDlg = new com.google.android.material.bottomsheet.BottomSheetDialog(MainActivity.this);
+        bsDlg.setContentView(v);
 
-        final TextInputLayout lblAddress = findViewById(R.id.lblAddress);
-        final EditText edtAddress = findViewById(R.id.edtAddress);
+        final BottomSheetBehavior bsBeh = BottomSheetBehavior.from((View) v.getParent());
+        bsBeh.setBottomSheetCallback(bsCallback);
 
-        final EditText edtFullName = findViewById(R.id.edtFullName);
-
-        Button cmdSave = findViewById(R.id.cmdSave);
-        cmdSave.setOnClickListener(new View.OnClickListener() {
+        Button cmdSimpleBottomSheet = findViewById(R.id.cmdSimpleBottomSheet);
+        cmdSimpleBottomSheet.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (edtUserName.getText().toString().trim().equals("")){
-                    lblUserName.setHint("กรุณาป้อนชื่อ-สกุลก่อน !!!");
-                }if (edtAddress.getText().toString().trim().equals("")){
-                    lblAddress.setHint("กรุณาป้อนที่อยู่ก่อน !!!");
-                }
-            }
-        });
-        /*if (cmdSave != null){
-            cmdSave.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (edtFullName.getText().toString().trim() != ""){
-                        Toast.makeText(MainActivity.this,edtFullName.getText(),Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-
-        }*/
-
-        final ConstraintLayout ctMain = findViewById(R.id.ctMain);
-
-        FloatingActionButton fabSearch = findViewById(R.id.fabSearch);
-        fabSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(ctMain,"ข้อความ Snackbar มาจากกดปุ่ม FAB",Snackbar.LENGTH_LONG).show();
+            public void onClick(View view) {
+                bsBeh.setState(BottomSheetBehavior.STATE_EXPANDED);
+                bsDlg.show();
             }
         });
 
+        Button cmdProcess = v.findViewById(R.id.cmdProcess);
+        cmdProcess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "คุณรับทราบข้อมูลแล้ว", Toast.LENGTH_LONG).show();
+                bsDlg.hide();
+            }
+        });
     }
+
+    BottomSheetBehavior.BottomSheetCallback bsCallback = new com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback() {
+        @Override
+        public void onStateChanged(@NonNull View bottomSheet, int newState) {
+            switch (newState) {
+                case BottomSheetBehavior.STATE_HIDDEN:
+                    bsDlg.hide();
+                    break;
+                case BottomSheetBehavior.STATE_EXPANDED:
+                    bsDlg.hide();
+                    break;
+                case BottomSheetBehavior.STATE_COLLAPSED:
+                    bsDlg.hide();
+                    break;
+                case com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_DRAGGING:
+                    bsDlg.hide();
+                    break;
+                case com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_SETTLING:
+                    bsDlg.hide();
+                    break;
+            }
+        }
+
+        @Override
+        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+        }
+    };
 }
