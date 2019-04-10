@@ -17,6 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RecyclerView rv = findViewById(R.id.recyclerview);
+        rv.setHasFixedSize(true);
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(MainActivity.this);
+        rv.setLayoutManager(lm);
+        androidx.recyclerview.widget.RecyclerView.Adapter adt = new adt_rv_cardview();
+        rv.setAdapter(adt);
+
         View v = getLayoutInflater().inflate(R.layout.bs_layout, null);
         bsDlg = new com.google.android.material.bottomsheet.BottomSheetDialog(MainActivity.this);
         bsDlg.setContentView(v);
