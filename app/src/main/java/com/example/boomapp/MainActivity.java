@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.boomapp.Adapter.adt_rv_cardview;
 
 public class MainActivity extends AppCompatActivity {
     com.google.android.material.bottomsheet.BottomSheetDialog bsDlg;
@@ -21,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(MainActivity.this);
         rv.setLayoutManager(lm);
-        androidx.recyclerview.widget.RecyclerView.Adapter adt = new adt_rv_cardview();
-        rv.setAdapter(adt);
+
 
         View v = getLayoutInflater().inflate(R.layout.bs_layout, null);
         bsDlg = new com.google.android.material.bottomsheet.BottomSheetDialog(MainActivity.this);
